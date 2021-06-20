@@ -8,9 +8,6 @@ const Imagecurosal = ({images}:{images:string[]}) => {
     
   
 
-    
-
-
 
      const [activeindex,setActiveIndex]=useState(0);
      const windowWidth=useWindowDimensions().width;

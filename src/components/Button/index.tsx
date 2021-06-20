@@ -21,7 +21,7 @@ const Button = ({text, onPress}:ButtonProps) => {
 const styles = StyleSheet.create({
    root:
    {
-      backgroundColor:'#e47911',
+      backgroundColor:'#f7e300',
       marginVertical:10,
       height:35,
       justifyContent: 'center',

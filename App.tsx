@@ -8,10 +8,10 @@
  *
  * @format
  */
-
+import 'react-native-gesture-handler';
 import React from 'react';
 import {
-  SafeAreaView,
+  View,
 
   StatusBar,
 
@@ -25,21 +25,24 @@ import {
 
 } from 'react-native/Libraries/NewAppScreen';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import ShopingCart from './src/screens/ShopingCart';
+import Router from './src/Router';
+
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+    flex:1,
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
+    <View style={backgroundStyle}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
 
-       <ShopingCart/>
-    </SafeAreaView>
+      <Router/>
+      
+    </View>
   );
 };
 

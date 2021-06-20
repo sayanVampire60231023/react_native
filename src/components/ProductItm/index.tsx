@@ -6,9 +6,10 @@
 
 /* eslint-disable prettier/prettier */
 import React from 'react';
-import { View,Image,Text } from 'react-native';
+import { View,Image,Text ,Pressable} from 'react-native';
 import Icons from 'react-native-vector-icons/FontAwesome';
 import styles from './styles';
+import { useNavigation } from '@react-navigation/native';
 // import { Container } from './styles';
 interface ProductItmProps{
   item:{
@@ -23,10 +24,14 @@ interface ProductItmProps{
 }
 
 const ProductItm = (props:ProductItmProps) => {
-   const {item}=props;
-   
+  const { item } = props;
+const navigation=useNavigation();
+   const onPress = ()=>
+   {
+        navigation.navigate('ProductDetails' ,{id  : item.id});
+   }
   return (
-       <View style={styles.root}>
+    <Pressable  onPress={onPress} style={styles.root}>
             <Image style={styles.image} source={{uri :item.image}}/>
             <View style={styles.rightContainer}>
                 <Text style={styles.title} numberOfLines={3}>{item.title}</Text>
@@ -51,7 +56,7 @@ const ProductItm = (props:ProductItmProps) => {
                 {item.oldPrice && <Text style ={styles.oldprice}>{item.oldPrice}</Text>}
                 </View>
             </View>
-          </View>
+    </Pressable>
   );
 }
 

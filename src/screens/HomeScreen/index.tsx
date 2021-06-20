@@ -5,7 +5,7 @@ import React from "react";
 import { View, StyleSheet,FlatList} from "react-native";
 import ProductItm from "../../components/ProductItm";
 import products from "../../data/products";
-const HomeScreen = ( )=>
+const HomeScreen = ({searchValue}:{searchValue :String} )=>
 {
     return(
       <View style={styles.page}>

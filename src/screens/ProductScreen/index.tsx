@@ -5,6 +5,7 @@
 import React,{useState} from 'react';
 import { View,Text,ScrollView } from 'react-native';
  import product from '../../data/product';
+ import { useRoute } from '@react-navigation/core';
 import { Picker } from '@react-native-picker/picker';
 import styles from './style';
 import QuantitySelector from '../../components/QuantitySelector';
@@ -14,6 +15,7 @@ import Imagecurosal from '../../components/Imagecurosal';
 const ProductScreen = () => {
 const [selectedOption, setSelectedOption] = useState(product.options? product.options[0]:null);
 const [Quantitiy, setQuantity] = useState(1);
+const route=useRoute();
 
   return (
     <ScrollView style={{paddingBottom:10, paddingTop:5,paddingLeft:5,paddingRight:5,  backgroundColor:'white'}}>
