@@ -28,8 +28,8 @@ const fetchCartProducts = async () => {
     const userData = await Auth.currentAuthenticatedUser();
     // TODO query only my cart items
     DataStore.query(CartProduct, cp =>
-    //cp.quantity('gt',0)
-      cp.userSub('eq', userData.attributes.sub),
+    cp.quantity('gt',0)
+      //cp.userSub('eq', userData.attributes.sub),
     ).then(setCartProducts,);
   };
   useEffect(() => {
