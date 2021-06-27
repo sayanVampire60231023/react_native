@@ -1,4 +1,8 @@
+
 # react_native
+# Plant Selling App
+- This project is like ecommerce  app where user can view the available items and add it  in the cart. User info and items and cart items will stored in the Aws S3 bucket .
+-  Publisher  can publish the new items  in S3 bucket .
 ## Frontend
 - javascript
 - typescript
