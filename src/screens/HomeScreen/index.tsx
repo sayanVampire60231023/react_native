@@ -1,23 +1,32 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable prettier/prettier */
-import React from "react";
+import React  from "react";
 import { View, StyleSheet,FlatList} from "react-native";
 import ProductItm from "../../components/ProductItm";
-import products from "../../data/products";
+// import products from "../../data/products";
+import { useState,useEffect } from "react";
+ import { DataStore } from "@aws-amplify/datastore";
+ import {Product} from '../../models';
 const HomeScreen = ({searchValue}:{searchValue :String} )=>
-{
-    return(
+{ const [products,setProducts]=useState<Product[]>([]);
+  useEffect(()=>{
+    const fetchProduct = async()=>{
+      const result = await DataStore.query(Product);
+      setProducts(result);
+    };
+    fetchProduct();
+  },[]);
+    return (
       <View style={styles.page}>
-          
-      
+
+
       <FlatList
        data ={products}
        renderItem={({item})=><ProductItm item={item}/>}
-        
+
        />
-     
-     
+
       </View>
     );
 };
@@ -25,7 +34,7 @@ const HomeScreen = ({searchValue}:{searchValue :String} )=>
 const styles = StyleSheet.create({
     page:{
        padding:10,
-       
+
     },
 }
 );

@@ -39,7 +39,7 @@ const navigation=useNavigation();
                 <View style={styles.ratingContainer}>
                  {[0,0,0,0,0].map((el,i)=>
                   <Icons style={styles.star}
-                  key={`${item.id}-${i}`} 
+                  key={`${item.id}-${i}`}
                 name={i <Math.floor(item.avgRating) ? 'star' :'star-o'} size={18} color={"#c47911"}/>
                  )
                    
@@ -52,8 +52,8 @@ const navigation=useNavigation();
                 </View>
                 <View style={{flexDirection:'row'}}>
 
-                <Text style={styles.price}>${item.price}</Text>
-                {item.oldPrice && <Text style ={styles.oldprice}>{item.oldPrice}</Text>}
+                <Text style={styles.price}>${item.price.toFixed(2)}</Text>
+                {item.oldPrice && <Text style ={styles.oldprice}>{item.oldPrice.toFixed(2)}</Text>}
                 </View>
             </View>
     </Pressable>

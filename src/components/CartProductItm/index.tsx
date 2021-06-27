@@ -11,49 +11,49 @@ import Icons from 'react-native-vector-icons/FontAwesome';
 import QuantitySelector from '../QuantitySelector';
 import styles from './styles';
 import { useState } from 'react';
-
+import {DataStore} from 'aws-amplify';
+import { CartProduct} from '../../models';
 // import { Container } from './styles';
 interface CartProductItmProps{
-    Cartitem:{
-       id:string;
-       quantity:number;
-       option?:string; 
-        item:{
-          id:string,
-          title:string,
-          image:string,
-          avgRating:number,
-          ratings:number,
-          price:number,
-          oldPrice?:number,
-        };
-    }
+    Cartitem:CartProduct;
 }
 
 const CartProductItm = ({Cartitem}:CartProductItmProps) => {
      
-   const {quantity: quantityProps,item}=Cartitem;
-   const [quantity,setquantity]=useState(quantityProps);
    
+  
+ const {product, ...cartProduct} = Cartitem;
+
+
+
+
+   const updateQuantity = async (newQuantity: number) => {
+    const original = await DataStore.query(CartProduct, cartProduct.id);
+    await DataStore.save(
+      CartProduct.copyOf(original, updated => {
+        updated.quantity = newQuantity;
+      }),
+    );
+  };
   return (
       <View style={styles.root}>
 
        <View style={styles.row}>
            <View style={{flexDirection:'column'}}>
 
-            <Image style={styles.image} source={{uri :item.image}}/>
+            <Image style={styles.image} source={{uri :product.image}}/>
              <View style={styles.quantity}>
-                    <QuantitySelector Quantitiy={quantity} setQuantity={setquantity}/>
+                    <QuantitySelector Quantitiy={CartProduct.Quantity} setQuantity={updateQuantity}/>
                 </View>
            </View>
             <View style={styles. rightContainer}>
-                <Text style={styles.title} numberOfLines={3}>{item.title}</Text>
+                <Text style={styles.title} numberOfLines={3}>{product.title}</Text>
                 
                 <View style={styles. ratingsContainer}>
                  {[0,0,0,0,0].map((el,i)=>
                   <Icons style={styles.star}
-                  key={`${item.id}-${i}`} 
-                name={i < Math.floor(item.avgRating) ? 'star' :'star-o'} size={18} color={"#c47911"}/>
+                  key={`${product.id}-${i}`} 
+                name={i < Math.floor(product.avgRating) ? 'star' :'star-o'} size={18} color={"#c47911"}/>
                  )
                    
                
@@ -61,12 +61,12 @@ const CartProductItm = ({Cartitem}:CartProductItmProps) => {
 
                 
 
-                <Text>{item.ratings}</Text>
+                <Text>{product.ratings}</Text>
                 </View>
                 <View style={{flexDirection:'row'}}>
 
-                <Text style={styles.price}>${item.price}</Text>
-                {item.oldPrice && <Text style ={styles.oldprice}>{item.oldPrice}</Text>}
+                <Text style={styles.price}>${product.price.toFixed(2)}</Text>
+                {product.oldPrice.toFixed(2) && <Text style ={styles.oldprice}>{product.oldPrice.toFixed(2)}</Text>}
                 </View>
                
             </View>

@@ -26,7 +26,13 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import Router from './src/Router';
+// @ts-expect-error
+import { withAuthenticator } from 'aws-amplify-react-native';
+import Amplify from 'aws-amplify';
+import config from './src/aws-exports';
 
+
+Amplify.configure(config);
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -46,4 +52,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default withAuthenticator(App);

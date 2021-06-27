@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-plantsell-dev-163009-authRole",
+      "UnauthRoleArn": "arn:aws:iam::860489555311:role/amplify-plantsell-dev-163009-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::860489555311:role/amplify-plantsell-dev-163009-authRole",
+      "Region": "ap-south-1",
+      "DeploymentBucketName": "amplify-plantsell-dev-163009-deployment",
+      "UnauthRoleName": "amplify-plantsell-dev-163009-unauthRole",
+      "StackName": "amplify-plantsell-dev-163009",
+      "StackId": "arn:aws:cloudformation:ap-south-1:860489555311:stack/amplify-plantsell-dev-163009/04f9b880-d349-11eb-a908-0a908ce2a9f2",
+      "AmplifyAppId": "d3pmp0gzrn4tag"
+    },
+    "categories": {
+      "auth": {
+        "plantsell5c6848c3": {}
+      }
+    }
+  }
+}

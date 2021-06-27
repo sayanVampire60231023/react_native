@@ -56,7 +56,7 @@ const HomeStack = () => {
       <Stack.Screen name="HomeScreen" options={{ title: 'Home' }}>
         {() => <HomeScreen searchValue={searchValue} />}
       </Stack.Screen>
-      <Stack.Screen component={ProductScreen} name="ProductDetails" />
+      <Stack.Screen component={ProductScreen} name='ProductDetails' />
     </Stack.Navigator>
   );
 };
